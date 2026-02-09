@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Санаторий Шипажай — Лечение и отдых в Казахстане</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2C5F2D;
+            --primary-light: #4A7C4B;
+            --secondary: #D4A574;
+            --accent: #97BC62;
+            --dark: #1B1B1B;
+            --light: #F9F7F4;
+            --white: #FFFFFF;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled .logo {
+            color: var(--primary);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled .nav-links a {
+            color: var(--dark);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--secondary);
+            color: var(--white) !important;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled .mobile-menu span {
+            background: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(44,95,45,0.8), rgba(26,60,27,0.9)), 
+                        url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212,165,116,0.2);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--white);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+            opacity: 0.7;
+        }
+
+        /* Features Bar */
+        .features-bar {
+            background: var(--white);
+            padding: 3rem 5%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
+            margin-top: -5rem;
+            margin-left: 5%;
+            margin-right: 5%;
+            border-radius: 20px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-images {
+            position: relative;
+        }
+
+        .about-img-main {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-img-sub {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 5px solid var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-content h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .stat-item h4 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: #777;
+            margin: 0;
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(to bottom, var(--light), var(--white));
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-content p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .service-link:hover {
+            gap: 1rem;
+        }
+
+        /* Rooms Section */
+        .rooms {
+            background: var(--white);
+        }
+
+        .rooms-slider {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .room-card {
+            background: var(--light);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .room-card:hover {
+            transform: scale(1.02);
+        }
+
+        .room-image {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .room-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .room-info {
+            padding: 2rem;
+        }
+
+        .room-info h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .room-features {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .room-features span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .room-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .price span {
+            font-size: 0.9rem;
+            color: #999;
+            font-weight: 400;
+        }
+
+        /* Treatment Section */
+        .treatment {
+            background: linear-gradient(135deg, var(--primary), #1a3c1b);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .treatment::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+
+        .treatment .section-header h2,
+        .treatment .section-header p {
+            color: var(--white);
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .treatment-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+        }
+
+        .treatment-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .treatment-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+
+        .treatment-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .treatment-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        .gallery-item:nth-child(2) { grid-column: span 1; grid-row: span 1; }
+        .gallery-item:nth-child(3) { grid-column: span 1; grid-row: span 1; }
+        .gallery-item:nth-child(4) { grid-column: span 2; grid-row: span 1; }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(44,95,45,0.8), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            color: var(--white);
+            font-size: 1.3rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 5rem;
+            color: var(--secondary);
+            opacity: 0.3;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 2rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .author-info h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(to right, var(--light) 50%, var(--white) 50%);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item div h4 {
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item div p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--primary);
+            color: var(--white);
+            padding: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .footer-brand p {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-img-sub {
+                display: none;
+            }
+
+            .features-bar {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: -3rem;
+            }
+
+            .services-grid,
+            .rooms-slider,
+            .treatment-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 200px);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-bar {
+                grid-template-columns: 1fr;
+                margin: 2rem;
+            }
+
+            .services-grid,
+            .rooms-slider,
+            .treatment-grid,
+            .testimonials-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(5, 200px);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 1;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact {
+                background: var(--white);
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44,95,45,0.98);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-overlay a {
+            color: var(--white);
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            color: var(--white);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <div class="logo-icon">Ш</div>
+            Шипажай
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#rooms">Номера</a></li>
+            <li><a href="#treatment">Лечение</a></li>
+            <li><a href="#gallery">Галерея</a></li>
+            <li><a href="#contact" class="nav-cta">Забронировать</a></li>
+        </ul>
+        <div class="mobile-menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <span class="close-menu" onclick="toggleMenu()">✕</span>
+        <a href="#about" onclick="toggleMenu()">О нас</a>
+        <a href="#services" onclick="toggleMenu()">Услуги</a>
+        <a href="#rooms" onclick="toggleMenu()">Номера</a>
+        <a href="#treatment" onclick="toggleMenu()">Лечение</a>
+        <a href="#gallery" onclick="toggleMenu()">Галерея</a>
+        <a href="#contact" onclick="toggleMenu()">Контакты</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🏥 Сертифицированный медицинский центр</div>
+            <h1>Санаторий Шипажай</h1>
+            <p>Возрождение здоровья в гармонии с природой Казахстана. Современные медицинские технологии и традиционные методы лечения.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Забронировать отдых</a>
+                <a href="#services" class="btn-outline">Наши услуги</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+        </div>
+    </section>
+
+    <!-- Features Bar -->
+    <div class="features-bar">
+        <div class="feature-item">
+            <div class="feature-icon">🌿</div>
+            <h3>Экологически чистый район</h3>
+            <p>Горный воздух и минеральные источники</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">👨‍⚕️</div>
+            <h3>Опытные врачи</h3>
+            <p>Высококвалифицированный медперсонал</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🏨</div>
+            <h3>Комфортные номера</h3>
+            <p>Современные апартаменты люкс-класса</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🍽️</div>
+            <h3>Диетическое питание</h3>
+            <p>Индивидуальное меню от диетолога</p>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div class="about-images">
+                <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800" alt="Территория санатория" class="about-img-main">
+                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400" alt="СПА процедуры" class="about-img-sub">
+            </div>
+            <div class="about-content">
+                <span class="section-badge">О санатории</span>
+                <h3>Ваш путь к здоровью начинается здесь</h3>
+                <p>Санаторий «Шипажай» — это современный оздоровительный комплекс, расположенный в живописном уголке Казахстана. Мы сочетаем передовые медицинские технологии с уникальными природными факторами региона.</p>
+                <p>Наши специалисты разработают индивидуальную программу лечения, учитывающую ваши особенности и пожелания. Мы лечим заболевания опорно-двигательного аппарата, нервной системы, сердечно-сосудистой системы и органов пищеварения.</p>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h4>15+</h4>
+                        <p>Лет успешной работы</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>5000+</h4>
+                        <p>Довольных пациентов</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>50+</h4>
+                        <p>Видов процедур</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <span class="section-badge">Услуги</span>
+            <h2>Комплексное оздоровление</h2>
+            <p>Мы предлагаем широкий спектр медицинских и wellness-услуг для вашего здоровья</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600" alt="Медицинское лечение">
+                </div>
+                <div class="service-content">
+                    <h3>Медицинское лечение</h3>
+                    <p>Консультации специалистов, диагностика, физиотерапия, бальнеотерапия и современные методы реабилитации.</p>
+                    <a href="#" class="service-link">Подробнее →</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600" alt="СПА и велнес">
+                </div>
+                <div class="service-content">
+                    <h3>СПА и Велнес</h3>
+                    <p>Расслабляющие массажи, ароматерапия, йога, медитации и комплексные оздоровительные программы.</p>
+                    <a href="#" class="service-link">Подробнее →</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600" alt="Фитнес и реабилитация">
+                </div>
+                <div class="service-content">
+                    <h3>Фитнес и реабилитация</h3>
+                    <p>Индивидуальные программы восстановления, ЛФК, бассейн с минеральной водой и тренажерный зал.</p>
+                    <a href="#" class="service-link">Подробнее →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section class="rooms" id="rooms">
+        <div class="section-header">
+            <span class="section-badge">Проживание</span>
+            <h2>Номера и апартаменты</h2>
+            <p>Комфортное проживание для полноценного отдыха и восстановления</p>
+        </div>
+        <div class="rooms-slider">
+            <div class="room-card">
+                <div class="room-image">
+                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600" alt="Стандартный номер">
+                    <span class="room-badge">Популярный</span>
+                </div>
+                <div class="room-info">
+                    <h3>Стандарт</h3>
+                    <p>Уютный номер с всеми удобствами</p>
+                    <div class="room-features">
+                        <span>🛏️ 2 кровати</span>
+                        <span>📺 TV</span>
+                        <span>🚿 Санузел</span>
+                        <span>🌐 WiFi</span>
+                    </div>
+                    <div class="room-price">
+                        <div class="price">25 000 ₸ <span>/ сутки</span></div>
+                        <a href="#contact" class="btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">Выбрать</a>
+                    </div>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-image">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600" alt="Комфорт номер">
+                </div>
+                <div class="room-info">
+                    <h3>Комфорт</h3>
+                    <p>Просторный номер повышенной комфортности</p>
+                    <div class="room-features">
+                        <span>🛏️ 2 кровати</span>
+                        <span>🛋️ Балкон</span>
+                        <span>🚿 Санузел</span>
+                        <span>❄️ Кондиционер</span>
+                    </div>
+                    <div class="room-price">
+                        <div class="price">35 000 ₸ <span>/ сутки</span></div>
+                        <a href="#contact" class="btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">Выбрать</a>
+                    </div>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-image">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600" alt="Люкс номер">
+                    <span class="room-badge">VIP</span>
+                </div>
+                <div class="room-info">
+                    <h3>Люкс</h3>
+                    <p>Премиальные апартаменты с панорамным видом</p>
+                    <div class="room-features">
+                        <span>🛏️ King-size</span>
+                        <span>🛋️ Гостиная</span>
+                        <span>🍳 Мини-кухня</span>
+                        <span>🏔️ Вид на горы</span>
+                    </div>
+                    <div class="room-price">
+                        <div class="price">55 000 ₸ <span>/ сутки</span></div>
+                        <a href="#contact" class="btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">Выбрать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Section -->
+    <section class="treatment" id="treatment">
+        <div class="section-header">
+            <span class="section-badge" style="background: var(--secondary);">Лечебные программы</span>
+            <h2>Специализации лечения</h2>
+            <p>Эффективные программы восстановления здоровья под наблюдением опытных врачей</p>
+        </div>
+        <div class="treatment-grid">
+            <div class="treatment-item">
+                <div class="treatment-icon">🦴</div>
+                <h3>Опорно-двигательный аппарат</h3>
+                <p>Лечение позвоночника, суставов, реабилитация после травм и операций</p>
+            </div>
+            <div class="treatment-item">
+                <div class="treatment-icon">❤️</div>
+                <h3>Сердечно-сосудистая система</h3>
+                <p>Профилактика и лечение заболеваний сердца и сосудов</p>
+            </div>
+            <div class="treatment-item">
+                <div class="treatment-icon">🧠</div>
+                <h3>Нервная система</h3>
+                <p>Лечение неврозов, бессонницы, восстановление после стрессов</p>
+            </div>
+            <div class="treatment-item">
+                <div class="treatment-icon">🫁</div>
+                <h3>Дыхательная система</h3>
+                <p>Лечение бронхитов, астмы, профилактика простудных заболеваний</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-header">
+            <span class="section-badge">Галерея</span>
+            <h2>Наша территория</h2>
+            <p>Погрузитесь в атмосферу здоровья и гармонии</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800" alt="Главный корпус">
+                <div class="gallery-overlay">
+                    <h4>Главный корпус</h4>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400" alt="Бассейн">
+                <div class="gallery-overlay">
+                    <h4>Минеральный бассейн</h4>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400" alt="СПА">
+                <div class="gallery-overlay">
+                    <h4>СПА-зона</h4>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800" alt="Территория">
+                <div class="gallery-overlay">
+                    <h4>Парковая зона</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header">
+            <span class="section-badge">Отзывы</span>
+            <h2>Что говорят наши гости</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">Прекрасный санаторий! Проходил курс лечения спины по направлению. Врачи внимательные, процедуры эффективные. Уже через неделю почувствовал значительное улучшение.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">АК</div>
+                    <div class="author-info">
+                        <h4>Азамат К.</h4>
+                        <p>Алматы, прошел курс в январе 2025</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Возили маму на реабилитацию после операции. Персонал очень заботливый, питание отличное, номера чистые и уютные. Мама довольна, планируем приехать снова.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">ДТ</div>
+                    <div class="author-info">
+                        <h4>Дина Т.</h4>
+                        <p>Астана, декабрь 2024</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Отдыхали семьей. Дети были в восторге от бассейна и экскурсий, мы с мужем оценили СПА и массажи. Идеальное сочетание лечения и отдыха!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">ЕМ</div>
+                    <div class="author-info">
+                        <h4>Елена М.</h4>
+                        <p>Шымкент, февраль 2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <span class="section-badge">Контакты</span>
+                <h3>Свяжитесь с нами</h3>
+                <p>Заполните форму, и наш менеджер свяжется с вами в ближайшее время для подбора оптимальной программы лечения и отдыха.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Адрес</h4>
+                            <p>Казахстан, Алматинская область,<br>Боровое, ул. Санаторная 15</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Телефон</h4>
+                            <p>+7 (727) 333-44-55<br>+7 (777) 123-45-67 (WhatsApp)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@shipajai.kz<br>booking@shipajai.kz</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕐</div>
+                        <div>
+                            <h4>Режим работы</h4>
+                            <p>Круглосуточно, заезд/выезд: 14:00/12:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <h3 style="margin-bottom: 2rem; color: var(--primary);">Забронировать</h3>
+                <div class="form-group">
+                    <label>Ваше имя</label>
+                    <input type="text" placeholder="Введите имя" required>
+                </div>
+                <div class="form-group">
+                    <label>Телефон</label>
+                    <input type="tel" placeholder="+7 (___) ___-__-__" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="example@mail.ru">
+                </div>
+                <div class="form-group">
+                    <label>Тип номера</label>
+                    <select>
+                        <option>Стандарт</option>
+                        <option>Комфорт</option>
+                        <option>Люкс</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Даты пребывания</label>
+                    <input type="text" placeholder="С __.__.____ по __.__.____">
+                </div>
+                <div class="form-group">
+                    <label>Комментарий</label>
+                    <textarea placeholder="Особые пожелания, диеты, необходимость лечения..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Отправить заявку</button>
+                <p style="margin-top: 1rem; font-size: 0.85rem; color: #888; text-align: center;">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>Шипажай</h3>
+                <p>Санаторий «Шипажай» — ведущий оздоровительный комплекс Казахстана, сочетающий современную медицину с уникальными природными ресурсами региона.</p>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📸</a>
+                    <a href="#">💬</a>
+                    <a href="#">▶️</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#rooms">Номера</a></li>
+                    <li><a href="#treatment">Лечение</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Услуги</h4>
+                <ul>
+                    <li><a href="#">Медицинское лечение</a></li>
+                    <li><a href="#">СПА программы</a></li>
+                    <li><a href="#">Реабилитация</a></li>
+                    <li><a href="#">Диагностика</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Информация</h4>
+                <ul>
+                    <li><a href="#">Правила проживания</a></li>
+                    <li><a href="#">Лицензии</a></li>
+                    <li><a href="#">Вакансии</a></li>
+                    <li><a href="#">Партнерам</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Санаторий «Шипажай». Все права защищены.</p>
+            <p>Лицензия на медицинскую деятельность №12345 выдана МЗ РК</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const overlay = document.getElementById('mobileOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Form submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Спасибо за заявку! Наш менеджер свяжется с вами в ближайшее время.');
+            e.target.reset();
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.service-card, .room-card, .treatment-item, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
